@@ -1,0 +1,27 @@
+<mvc:View controllerName="ns.appform.controller.Detail"
+ xmlns:mvc="sap.ui.core.mvc"
+ xmlns="sap.m">
+    <Page title="Customer Details" showNavButton="true" navButtonPress=".onNavBack">
+    <content>
+        <ObjectHeader
+            responsive="true"
+            fullScreenOptimized="true"
+            title="{Form} {CustomerName}"
+            >
+            <attributes>
+                <ObjectAttribute title="{i18n>customerNumberTitle}" text="{customerDetails>/valObj/CustomerNumber}"/>
+                <ObjectAttribute title="{i18n>streetTitle}" text="{customerDetails>/valObj/Street}"/>
+                <ObjectAttribute title="{i18n>postcodeTitle}" text="{customerDetails>/valObj/PostCode}"/>
+                <ObjectAttribute title="{i18n>cityTitle}" text="{customerDetails>/valObj/City}"/>
+                <ObjectAttribute title="{i18n>countryTitle}" text="{customerDetails>/valObj/Country}"/>
+                <ObjectAttribute title="{i18n>emailTitle}" text="{customerDetails>/valObj/Email}"/>
+                <ObjectAttribute title="{i18n>phoneTitle}" text="{customerDetails>/valObj/Telephone}"/>                
+                <ObjectAttribute title="{i18n>discountTitle}" text="{ path: 'customerDetails>/valObj/Discount',
+                                                                    type: 'sap.ui.model.type.Float',
+                                                                    formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}
+                                                                    } %"/>
+            </attributes>
+        </ObjectHeader>
+    </content>
+    </Page>
+</mvc:View>

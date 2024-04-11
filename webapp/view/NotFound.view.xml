@@ -1,0 +1,13 @@
+<mvc:View controllerName="ns.appform.controller.NotFound"
+ xmlns:mvc="sap.ui.core.mvc"
+ xmlns="sap.m">
+
+<MessagePage
+    title="{i18n>notFoundPageTitle}"
+    text="{i18n>notFoundPageText}">
+        <customDescription>
+        <Link text="{i18n>navToOverviewLinkText}" press=".onNavToOverview"/>
+        </customDescription>
+</MessagePage>
+
+</mvc:View>

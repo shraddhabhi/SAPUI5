@@ -1,0 +1,168 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "ns.appform",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.13.1",
+            "toolsId": "c11d1253-03ee-43de-8459-91a548bb455d"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.122.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "handleValidation": true,
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ns.appform.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/data.json"
+              } ,
+              "dataforDetails": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/data.json"
+              },
+              "odata": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "ns.appform.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false,
+                "bypassed": {
+                    "target":["notFound"]
+                }
+            },
+            "routes": [
+                {
+                    "name": "RouteOverview",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetOverview"
+                    ]
+                },
+                {
+                    "name": "overview",
+                    "pattern": "",
+                    "target":["overview"]
+                },
+                {
+                    "name": "detail",
+                    "pattern": "detail/{customerId}",
+                    "target":["detail"]
+                }
+            ],
+            "targets": {
+                "TargetOverview": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Overview",
+                    "viewName": "Overview"
+                },
+                "overview":{
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "overview",
+                    "viewName": "Overview",
+                    "viewLevel": 1
+                },
+                "detail":{
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "detail",
+                    "viewName": "Detail",
+                    "viewLevel": 2
+                },
+                "notFound":{
+                    "viewId": "notFound",
+                    "viewName": "NotFound",
+                    "transition":"flip"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "ns.appform.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "nsappform"
+    }
+}
